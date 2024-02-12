@@ -1,0 +1,12 @@
+.select-option {
+  width: 120;
+	place-self: end;
+}
+
+.form {
+  width: 90%;
+}
+
+.add-form {
+  width: 40%;
+}
