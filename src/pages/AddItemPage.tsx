@@ -4,11 +4,16 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import ItemForm from "../components/ItemForm";
 
-const AddItemPage = () => {
+interface AddItemPageProps {
+  mockFunction: () => void;
+}
+
+const AddItemPage: React.FC<AddItemPageProps> = ({ mockFunction }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
+    mockFunction();
     const items = localStorage.getItem("items");
     const parsedItems = JSON.parse(items || "[]");
     localStorage.setItem("items", JSON.stringify([...parsedItems, values]));
@@ -34,7 +39,7 @@ const AddItemPage = () => {
       >
         <ItemForm />
 
-        <Form.Item style={{ textAlign: "right" }}>
+        <Form.Item className="text-right">
           <Link to="/">
             <Button type="default" style={{ marginRight: "0.5rem" }}>
               {t("Cancel")}

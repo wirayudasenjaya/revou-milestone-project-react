@@ -8,7 +8,9 @@ import dayjs from "dayjs";
 
 const DashboardPage: React.FC = () => {
   const user = localStorage.getItem("user");
+  const usersList = localStorage.getItem("usersList");
   const parsedUser = JSON.parse(user || "{}");
+  const parsedUsersList = JSON.parse(usersList || "[]");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const languageOptions = [
@@ -34,8 +36,11 @@ const DashboardPage: React.FC = () => {
 
   const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    parsedUser.isLoggedIn = false;
-    localStorage.setItem("user", JSON.stringify(parsedUser));
+    const currentUserIndex = parsedUsersList.findIndex((item: any) => item["username"] === parsedUser.username);
+    parsedUsersList[currentUserIndex].isLoggedIn = false;
+    localStorage.setItem("usersList", JSON.stringify(parsedUsersList));
+    localStorage.removeItem("user");
+    localStorage.removeItem("items");
     navigate("/login", { replace: true });
     window.location.reload();
   };

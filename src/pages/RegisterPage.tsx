@@ -18,6 +18,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
   const [current, setCurrent] = useState<number>(0);
   const [showResult, setShowResult] = useState<boolean>(false);
   const [user, setUser] = useRecoilState<any>(userState);
+  const users = JSON.parse(localStorage.getItem("usersList") ?? "[]");
   const {t, i18n} = useTranslation();
   const languageOptions = [
     { value: "en", label: "English" },
@@ -30,12 +31,20 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
   useEffect(() => {}, [selectedLang])
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(user));
+    if(showResult === true) {
+      users.push(user);
+      localStorage.setItem("usersList", JSON.stringify(users));
+    }
   }, [showResult])
 
   const onFinish = (values: any) => {
     if (current === 2) {
       const hashed = bcrypt.hashSync(values.password, 10);
+      const checkUsername = users.find((item: any) => item["username"] === values.username);
+      if (checkUsername) {
+        alert("Username already exists");
+        return;
+      }
       setUser((prev: any) => ({ ...prev, username: values.username, password:  hashed}));
       setShowResult(true);
     } else {
@@ -88,7 +97,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
             >
               {formPage[current]}
 
-              <Form.Item style={{ textAlign: "right" }}>
+              <Form.Item className="text-right">
                 <Button
                   style={{ margin: "0 8px" }}
                   disabled={current === 0 ? true : false}

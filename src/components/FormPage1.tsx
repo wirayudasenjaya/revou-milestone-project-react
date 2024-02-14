@@ -52,7 +52,7 @@ const FormPage1: React.FC = () => {
           },
         ]}
       >
-        <DatePicker maxDate={dayjs("2006-12-31", "YYYY-MM-DD")} />
+        <DatePicker maxDate={dayjs().subtract(20, 'years')} />
       </Form.Item>
     </>
   );

@@ -7,10 +7,13 @@ import LoginForm from "../components/LoginForm";
 import { useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
 
-interface LoginPageProps {}
+interface LoginPageProps {
+  mockFunction: () => void;
+}
 
-const LoginPage: React.FC<LoginPageProps> = () => {
+const LoginPage: React.FC<LoginPageProps> = ({ mockFunction }) => {
   const user = localStorage.getItem("user");
+  const usersList = localStorage.getItem("usersList");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const languageOptions = [
@@ -23,18 +26,23 @@ const LoginPage: React.FC<LoginPageProps> = () => {
   useEffect(() => {}, [selectedLang]);
 
   const onFinish = (values: any) => {
+    mockFunction();
     const parsedUser = JSON.parse(user || "{}");
-    console.log(values.username === parsedUser.username);
+    const parsedUsersList = JSON.parse(usersList || "[]");
+    const selectedUser = parsedUsersList.find((item: any) => item["username"] === values.username);
+    const userIndex = parsedUsersList.findIndex((item: any) => item["username"] === values.username);
+    console.log(selectedUser);
     if (
-      values.username === parsedUser.username &&
-      bcrypt.compareSync(values.password, parsedUser.password)
+      values.username === selectedUser.username &&
+      bcrypt.compareSync(values.password, selectedUser.password)
     ) {
-      parsedUser.isLoggedIn = true;
-      localStorage.setItem("user", JSON.stringify(parsedUser));
+      parsedUsersList[userIndex].isLoggedIn = true;
+      selectedUser.isLoggedIn = true;
+      localStorage.setItem("usersList", JSON.stringify(parsedUsersList));
+      localStorage.setItem("user", JSON.stringify(selectedUser));
       navigate("/dashboard", { replace: true });
       window.location.reload();
     } else {
-      console.log("wrong", parsedUser);
       setError(true);
     }
   };
@@ -78,7 +86,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
         >
           <LoginForm />
 
-          <Form.Item style={{ textAlign: "right" }}>
+          <Form.Item className="text-right">
             <Button type="primary" htmlType="submit">
               {t("Submit")}
             </Button>

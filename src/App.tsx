@@ -7,6 +7,7 @@ import PageLayout from "./pages/Layout";
 const App: React.FC = () => {
   const user = localStorage.getItem("user");
   const parsedUser = JSON.parse(user || "{}");
+  const testFunc = () => {};
 
   return (
     <ConfigProvider
@@ -29,7 +30,8 @@ const App: React.FC = () => {
                 <Route
                   key={index}
                   path={route.path}
-                  element={<route.component />}
+                  element={route.mock === true ? <route.component mockFunction={testFunc} /> : <route.component />}
+
                 />
               ))}
             </Route>
@@ -38,7 +40,7 @@ const App: React.FC = () => {
               <Route
                 key={index}
                 path={route.path}
-                element={<route.component />}
+                element={route.mock === true ? <route.component mockFunction={testFunc} /> : <route.component />}
               />
             ))
           )}

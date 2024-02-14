@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, InputNumber, Select } from "antd";
 import { useTranslation } from "react-i18next";
 import '../i18n';
-import { city, state } from "../utils";
+import { cityBanten, cityJakarta, state } from "../utils";
 
 const FormPage2: React.FC = () => {
   type FieldType = {
@@ -13,6 +13,13 @@ const FormPage2: React.FC = () => {
   };
 
   const { t } = useTranslation();
+  const [selectedState, setSelectedState] = useState<string | undefined>(undefined);
+
+  const handleStateChange = (value: string) => {
+    setSelectedState(value);
+  };
+
+  const cityOptions = selectedState === "Banten" ? cityBanten : cityJakarta;
 
   return (
     <>
@@ -30,19 +37,6 @@ const FormPage2: React.FC = () => {
       </Form.Item>
 
       <Form.Item<FieldType>
-        label={t("City")}
-        name="city"
-        rules={[
-          {
-            required: true,
-            message: `${t("Please input your address city!")}`,
-          },
-        ]}
-      >
-        <Select options={city} />
-      </Form.Item>
-
-      <Form.Item<FieldType>
         label={t("State")}
         name="state"
         rules={[
@@ -52,7 +46,20 @@ const FormPage2: React.FC = () => {
           },
         ]}
       >
-        <Select options={state} />
+        <Select options={state} onChange={handleStateChange} />
+      </Form.Item>
+
+      <Form.Item<FieldType>
+        label={t("City")}
+        name="city"
+        rules={[
+          {
+            required: true,
+            message: `${t("Please input your address city!")}`,
+          },
+        ]}
+      >
+        <Select options={cityOptions} disabled={!selectedState} />
       </Form.Item>
 
       <Form.Item<FieldType>

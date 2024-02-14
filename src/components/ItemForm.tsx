@@ -36,7 +36,7 @@ const ItemForm: React.FC = () => {
           },
         ]}
       >
-        <InputNumber style={{ width: '100%' }} />
+        <InputNumber className="w-full" />
       </Form.Item>
     </>
   );

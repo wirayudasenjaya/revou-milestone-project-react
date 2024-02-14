@@ -10,3 +10,11 @@
 .add-form {
   width: 40%;
 }
+
+.text-right {
+  text-align: right;
+}
+
+.w-full {
+  width: 100%;
+}

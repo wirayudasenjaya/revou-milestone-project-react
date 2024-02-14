@@ -1,21 +1,22 @@
-const city = [
-	{ value: "Jakarta", label: "Jakarta" },
-	{ value: "Bandung", label: "Bandung" },
-	{ value: "Surabaya", label: "Surabaya" },
-	{ value: "Medan", label: "Medan" },
-	{ value: "Semarang", label: "Semarang" },
-	{ value: "Yogyakarta", label: "Yogyakarta" },
-	{ value: "Denpasar", label: "Denpasar" },
-]
-
 const state = [
 	{ value: "DKI Jakarta", label: "DKI Jakarta" },
-	{ value: "Jawa Barat", label: "Jawa Barat" },
-	{ value: "Jawa Timur", label: "Jawa Timur" },
-	{ value: "Sumatera Utara", label: "Sumatera Utara" },
-	{ value: "Jawa Tengah", label: "Jawa Tengah" },
-	{ value: "DI Yogyakarta", label: "DI Yogyakarta" },
-	{ value: "Bali", label: "Bali" },
+	{ value: "Banten", label: "Banten" },
 ]
 
-export { city, state };
+const cityJakarta = [
+	{ value: "Jakarta Pusat", label: "Jakarta Pusat" },
+	{ value: "Jakarta Barat", label: "Jakarta Barat" },
+	{ value: "Jakarta Timur", label: "Jakarta Timur" },
+	{ value: "Jakarta Selatan", label: "Jakarta Selatan" },
+	{ value: "Jakarta Utara", label: "Jakarta Utara" },
+]
+
+const cityBanten = [
+	{ value: "Tangerang", label: "Tangerang" },
+	{ value: "Tangerang Selatan", label: "Tangerang Selatan" },
+	{ value: "Serang", label: "Serang" },
+	{ value: "Lebak", label: "Lebak" },
+	{ value: "Pandeglang", label: "Pandeglang" },
+]
+
+export { cityJakarta, cityBanten, state };

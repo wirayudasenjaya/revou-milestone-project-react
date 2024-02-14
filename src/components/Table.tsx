@@ -47,7 +47,7 @@ const DataTable: React.FC = () => {
     <Table
       columns={columns}
       dataSource={dataSource}
-      style={{ width: "100%" }}
+      className="w-full"
     />
   );
 };

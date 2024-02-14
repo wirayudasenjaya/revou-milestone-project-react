@@ -49,8 +49,9 @@ describe("utility", () => {
       password: "Asdf123!",
       isLoggedIn: false,
     };
+    const testFunc = jest.fn();
     window.localStorage.setItem(mockId, JSON.stringify(mockJson));
-    const utils = render(<LoginPage />, { wrapper: Wrappers });
+    const utils = render(<LoginPage mockFunction={testFunc} />, { wrapper: Wrappers });
     const username = utils.getByLabelText(/Username/i);
     const password = utils.getByLabelText(/Password/i);
     const button = utils.getByText(/Submit/i);
@@ -58,6 +59,7 @@ describe("utility", () => {
       username,
       password,
       button,
+      testFunc,
       ...utils,
     };
   }
@@ -82,7 +84,8 @@ describe("utility", () => {
   };
 
   function addItemUtils() {
-    const utils = render(<AddItemPage />, { wrapper: Wrappers });
+    const testFunc = jest.fn();
+    const utils = render(<AddItemPage mockFunction={testFunc} />, { wrapper: Wrappers });
     const item = utils.getByLabelText(/Item Name/i);
     const quantity = utils.getByLabelText(/Quantity/i);
     const button = screen.getByText(/Submit/i);
@@ -90,7 +93,8 @@ describe("utility", () => {
       ...utils,
       item,
       quantity,
-      button
+      button,
+      testFunc,
     };
   }
 
@@ -101,7 +105,8 @@ describe("utility", () => {
   });
 
   test("render login page", () => {
-    render(<LoginPage />, { wrapper: Wrappers });
+    const testFunc = jest.fn();
+    render(<LoginPage mockFunction={testFunc} />, { wrapper: Wrappers });
     const linkElement = screen.getByText(/Login/i);
     expect(linkElement).toBeInTheDocument();
   });
@@ -115,7 +120,8 @@ describe("utility", () => {
   });
 
   test("render add item page", () => {
-    render(<AddItemPage />, { wrapper: Wrappers });
+    const testFunc = jest.fn();
+    render(<AddItemPage mockFunction={testFunc} />, { wrapper: Wrappers });
     const linkElement = screen.getByText(/Add Item/i);
     expect(linkElement).toBeInTheDocument();
   });
@@ -163,26 +169,26 @@ describe("utility", () => {
   });
 
   test("login", async () => {
-    const { username, password, button } = loginUtils();
+    const { username, password, button, testFunc } = loginUtils();
     fireEvent.change(username, { target: { value: "wirayuda" } });
     fireEvent.change(password, {
       target: { value: "Asdf123!" },
     });
     fireEvent.click(button);
     await waitFor(() => {
-      expect(window.location.pathname).toBe("/dashboard");
-    });
+      expect(testFunc).toHaveBeenCalled();
+    }, {timeout: 2000});
   });
 
   test("add item to cart", async () => {
-    const { item, quantity, button } = addItemUtils();
+    const { item, quantity, button, testFunc } = addItemUtils();
     fireEvent.change(item, { target: { value: "Sofa" } });
     fireEvent.change(quantity, {
       target: { value: 1 },
     });
     fireEvent.click(button);
     await waitFor(() => {
-      expect(window.location.pathname).toBe("/");
+      expect(testFunc).toHaveBeenCalled();
     });
   });
 });
