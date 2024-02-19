@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Layout, Select } from "antd";
 import { useRecoilState } from "recoil";
+import { useTranslation } from "react-i18next";
+import bcrypt from "bcryptjs";
+
 import Step from "../components/Step";
-import FormPage1 from "../components/FormPage1";
-import FormPage2 from "../components/FormPage2";
-import FormPage3 from "../components/FormPage3";
+import PersonalForm from "../components/PersonalForm";
+import AddressForm from "../components/AddressForm";
+import AccountForm from "../components/AccountForm";
 import ResultPage from "../components/Result";
 import background from "../assets/image.webp";
 import { userState } from "../atom";
-import { useTranslation } from "react-i18next";
-import bcrypt from "bcryptjs";
 import '../i18n';
 
 interface RegisterPageProps {}
@@ -26,7 +27,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
   ]
   const [selectedLang, setSelectedLang] = useState<string>("en");
   const pageTitle = ['Personal Information', 'Address Information', 'Account Information'];
-  const formPage = [<FormPage1 />, <FormPage2 />, <FormPage3 />];
+  const formPage = [<PersonalForm />, <AddressForm />, <AccountForm />];
 
   useEffect(() => {}, [selectedLang])
 

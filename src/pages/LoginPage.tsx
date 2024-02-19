@@ -7,11 +7,9 @@ import LoginForm from "../components/LoginForm";
 import { useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
 
-interface LoginPageProps {
-  mockFunction: () => void;
-}
+interface LoginPageProps {}
 
-const LoginPage: React.FC<LoginPageProps> = ({ mockFunction }) => {
+const LoginPage: React.FC<LoginPageProps> = () => {
   const user = localStorage.getItem("user");
   const usersList = localStorage.getItem("usersList");
   const { t, i18n } = useTranslation();
@@ -26,12 +24,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ mockFunction }) => {
   useEffect(() => {}, [selectedLang]);
 
   const onFinish = (values: any) => {
-    mockFunction();
-    const parsedUser = JSON.parse(user || "{}");
     const parsedUsersList = JSON.parse(usersList || "[]");
     const selectedUser = parsedUsersList.find((item: any) => item["username"] === values.username);
     const userIndex = parsedUsersList.findIndex((item: any) => item["username"] === values.username);
-    console.log(selectedUser);
+
     if (
       values.username === selectedUser.username &&
       bcrypt.compareSync(values.password, selectedUser.password)
