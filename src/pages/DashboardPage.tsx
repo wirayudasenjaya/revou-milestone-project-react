@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, Select } from "antd";
 import { useTranslation } from "react-i18next";
-import "../i18n";
 import { Link, useNavigate } from "react-router-dom";
-import DataTable from "../components/Table";
 import dayjs from "dayjs";
+
+import "../i18n";
+
+import DataTable from "../components/Table";
 
 const DashboardPage: React.FC = () => {
   const user = localStorage.getItem("user");

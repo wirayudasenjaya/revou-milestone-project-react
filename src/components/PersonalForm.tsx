@@ -1,8 +1,9 @@
 import React from "react";
 import { DatePicker, Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
-import "../i18n";
 import dayjs from "dayjs";
+
+import "../i18n";
 
 const PersonalForm: React.FC = () => {
   type FieldType = {

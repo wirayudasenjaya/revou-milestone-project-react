@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, Layout, Select } from "antd";
 import background from "../assets/image.webp";
 import { useTranslation } from "react-i18next";
-import "../i18n";
-import LoginForm from "../components/LoginForm";
 import { useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
+
+import "../i18n";
+
+import LoginForm from "../components/LoginForm";
 
 interface LoginPageProps {}
 

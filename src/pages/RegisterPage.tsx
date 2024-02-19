@@ -4,6 +4,8 @@ import { useRecoilState } from "recoil";
 import { useTranslation } from "react-i18next";
 import bcrypt from "bcryptjs";
 
+import '../i18n';
+
 import Step from "../components/Step";
 import PersonalForm from "../components/PersonalForm";
 import AddressForm from "../components/AddressForm";
@@ -11,7 +13,6 @@ import AccountForm from "../components/AccountForm";
 import ResultPage from "../components/Result";
 import background from "../assets/image.webp";
 import { userState } from "../atom";
-import '../i18n';
 
 interface RegisterPageProps {}
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
+
 import '../i18n';
 
 const AccountForm: React.FC = () => {
