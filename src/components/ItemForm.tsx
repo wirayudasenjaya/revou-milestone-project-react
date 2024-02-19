@@ -9,17 +9,17 @@ const ItemForm: React.FC = () => {
     quantity?: number;
   };
 
-  const { t } = useTranslation();
+  const { t: translate } = useTranslation();
 
   return (
     <>
       <Form.Item<FieldType>
-        label={t("Item Name")}
+        label={translate("Item Name")}
         name="item"
         rules={[
           {
             required: true,
-            message: `${t("Please input item name!")}`,
+            message: `${translate("Please input item name!")}`,
           },
         ]}
       >
@@ -27,12 +27,12 @@ const ItemForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item<FieldType>
-        label={t("Quantity")}
+        label={translate("Quantity")}
         name="quantity"
         rules={[
           {
             required: true,
-            message: `${t("Please input item quantity!")}`,
+            message: `${translate("Please input item quantity!")}`,
           },
         ]}
       >

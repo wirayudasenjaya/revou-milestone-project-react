@@ -5,17 +5,17 @@ import { useTranslation } from "react-i18next";
 import '../i18n';
 
 const ResultPage: React.FC = () => {
-  const { t } = useTranslation();
+  const { t: translate } = useTranslation();
 
   return (
     <Result
       status="success"
-      title={t("Successfully Registered!")}
-      subTitle={t("Enjoy your day")}
+      title={translate("Successfully Registered!")}
+      subTitle={translate("Enjoy your day")}
       extra={[
         <Link to="login">
           <Button type="primary" key="console">
-            {t("Go to login page")}
+            {translate("Go to login page")}
           </Button>
         </Link>,
       ]}

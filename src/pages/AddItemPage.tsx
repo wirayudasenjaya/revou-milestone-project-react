@@ -7,7 +7,7 @@ import ItemForm from "../components/ItemForm";
 interface AddItemPageProps {}
 
 const AddItemPage: React.FC<AddItemPageProps> = () => {
-  const { t } = useTranslation();
+  const { t: translate } = useTranslation();
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
@@ -39,12 +39,12 @@ const AddItemPage: React.FC<AddItemPageProps> = () => {
         <Form.Item className="text-right">
           <Link to="/">
             <Button type="default" style={{ marginRight: "0.5rem" }}>
-              {t("Cancel")}
+              {translate("Cancel")}
             </Button>
           </Link>
 
           <Button type="primary" htmlType="submit">
-            {t("Submit")}
+            {translate("Submit")}
           </Button>
         </Form.Item>
       </Form>

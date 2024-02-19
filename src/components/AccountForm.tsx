@@ -10,17 +10,17 @@ const AccountForm: React.FC = () => {
     confirm?: string;
   };
 
-  const { t } = useTranslation();
+  const { t: translate } = useTranslation();
 
   return (
     <>
       <Form.Item<FieldType>
-        label={t("Username")}
+        label={translate("Username")}
         name="username"
         rules={[
           {
             required: true,
-            message: `${t("Please input your username!")}`,
+            message: `${translate("Please input your username!")}`,
           },
         ]}
       >
@@ -28,32 +28,32 @@ const AccountForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item<FieldType>
-        label={t("Password")}
+        label={translate("Password")}
         name="password"
         rules={[
           {
             required: true,
-            message: `${t("Please input your password!")}`,
+            message: `${translate("Please input your password!")}`,
           },
           {
             pattern: /^.{8,}$/,
-            message: `${t("8 characters")}`,
+            message: `${translate("8 characters")}`,
           },
           {
             pattern: /^(?=.*[A-Z]).*$/,
-            message: `${t("One uppercase letter")}`,
+            message: `${translate("One uppercase letter")}`,
           },
           {
             pattern: /^(?=.*[a-z]).*$/,
-            message: `${t("One lowercase letter")}`,
+            message: `${translate("One lowercase letter")}`,
           },
           {
             pattern: /^(?=.*\d).*$/,
-            message: `${t("One number")}`,
+            message: `${translate("One number")}`,
           },
           {
             pattern: /^(?=.*[!@#$%^&*_=+-]).*$/,
-            message: `${t("One special character")}`,
+            message: `${translate("One special character")}`,
           },
         ]}
       >
@@ -62,13 +62,13 @@ const AccountForm: React.FC = () => {
 
       <Form.Item<FieldType>
         name="confirm"
-        label={t("Confirm Password")}
+        label={translate("Confirm Password")}
         dependencies={["password"]}
         hasFeedback
         rules={[
           {
             required: true,
-            message: `${t("Please confirm your password!")}`,
+            message: `${translate("Please confirm your password!")}`,
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
@@ -76,7 +76,7 @@ const AccountForm: React.FC = () => {
                 return Promise.resolve();
               }
               return Promise.reject(
-                new Error(`${t("The new password that you entered do not match!")}`)
+                new Error(`${translate("The new password that you entered do not match!")}`)
               );
             },
           }),

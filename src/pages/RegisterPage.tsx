@@ -20,7 +20,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
   const [showResult, setShowResult] = useState<boolean>(false);
   const [user, setUser] = useRecoilState<any>(userState);
   const users = JSON.parse(localStorage.getItem("usersList") ?? "[]");
-  const {t, i18n} = useTranslation();
+  const {t: translate, i18n} = useTranslation();
   const languageOptions = [
     { value: "en", label: "English" },
     { value: "id", label: "Indonesia" },
@@ -104,16 +104,16 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
                   disabled={current === 0 ? true : false}
                   onClick={() => setCurrent(current - 1)}
                 >
-                  {t("Previous")}
+                  {translate("Previous")}
                 </Button>
                 {current < 2 && (
                   <Button type="primary" htmlType="submit">
-                    {t("Next")}
+                    {translate("Next")}
                   </Button>
                 )}
                 {current === 2 && (
                   <Button type="primary" htmlType="submit">
-                    {t("Submit")}
+                    {translate("Submit")}
                   </Button>
                 )}
               </Form.Item>

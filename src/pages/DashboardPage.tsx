@@ -11,7 +11,7 @@ const DashboardPage: React.FC = () => {
   const usersList = localStorage.getItem("usersList");
   const parsedUser = JSON.parse(user || "{}");
   const parsedUsersList = JSON.parse(usersList || "[]");
-  const { t, i18n } = useTranslation();
+  const { t: translate, i18n } = useTranslation();
   const navigate = useNavigate();
   const languageOptions = [
     { value: "en", label: "English" },
@@ -65,32 +65,32 @@ const DashboardPage: React.FC = () => {
               />
               <div>
                 <h1>
-                  {t("Hello")}, {parsedUser.fullname}
+                  {translate("Hello")}, {parsedUser.fullname}
                 </h1>
                 <p>{parsedUser.email}</p>
               </div>
             </div>
             <p>
-              {t("Username")}: {parsedUser.username}
+              {translate("Username")}: {parsedUser.username}
             </p>
             <p>
-              {t("Date Of Birth")}:{" "}
+              {translate("Date Of Birth")}:{" "}
               {dayjs(parsedUser.dateOfBirth).format("DD/MM/YYYY")}
             </p>
             <p>
-              {t("Street")}: {parsedUser.street}
+              {translate("Street")}: {parsedUser.street}
             </p>
             <p>
-              {t("City")}: {parsedUser.city}
+              {translate("City")}: {parsedUser.city}
             </p>
             <p>
-              {t("State")}: {parsedUser.state}
+              {translate("State")}: {parsedUser.state}
             </p>
             <p>
-              {t("Zip Code")}: {parsedUser.zipcode}
+              {translate("Zip Code")}: {parsedUser.zipcode}
             </p>
             <Button type="primary" key="button1" onClick={handleClick}>
-              {t("Back to register")}
+              {translate("Back to register")}
             </Button>
             <Button
               type="primary"
@@ -98,15 +98,15 @@ const DashboardPage: React.FC = () => {
               style={{ marginLeft: "0.75rem" }}
               onClick={handleLogout}
             >
-              {t("Logout")}
+              {translate("Logout")}
             </Button>
           </div>
           <div>
             <div className="cart-layout">
-              <h2>{t("Your Cart")}</h2>
+              <h2>{translate("Your Cart")}</h2>
               <Link to="/dashboard/add">
                 <Button type="primary" key="console">
-                  {t("Add item")}
+                  {translate("Add item")}
                 </Button>
               </Link>
             </div>

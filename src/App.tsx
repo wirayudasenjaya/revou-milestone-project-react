@@ -7,7 +7,6 @@ import PageLayout from "./pages/Layout";
 const App: React.FC = () => {
   const user = localStorage.getItem("user");
   const parsedUser = JSON.parse(user || "{}");
-  const testFunc = () => {};
 
   return (
     <ConfigProvider

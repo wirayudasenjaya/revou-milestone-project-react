@@ -9,17 +9,17 @@ const LoginForm: React.FC = () => {
     password?: string;
   };
 
-  const { t } = useTranslation();
+  const { t: translate } = useTranslation();
 
   return (
     <>
       <Form.Item<FieldType>
-        label={t("Username")}
+        label={translate("Username")}
         name="username"
         rules={[
           {
             required: true,
-            message: `${t("Please input your username!")}`,
+            message: `${translate("Please input your username!")}`,
           },
         ]}
       >
@@ -27,12 +27,12 @@ const LoginForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item<FieldType>
-        label={t("Password")}
+        label={translate("Password")}
         name="password"
         rules={[
           {
             required: true,
-            message: `${t("Please input your password!")}`,
+            message: `${translate("Please input your password!")}`,
           }
         ]}
       >

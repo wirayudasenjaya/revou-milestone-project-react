@@ -12,7 +12,7 @@ interface LoginPageProps {}
 const LoginPage: React.FC<LoginPageProps> = () => {
   const user = localStorage.getItem("user");
   const usersList = localStorage.getItem("usersList");
-  const { t, i18n } = useTranslation();
+  const { t: translate, i18n } = useTranslation();
   const navigate = useNavigate();
   const languageOptions = [
     { value: "en", label: "English" },
@@ -63,10 +63,10 @@ const LoginPage: React.FC<LoginPageProps> = () => {
           options={languageOptions}
         />
         <br />
-        <h1>{t("Login")}</h1>
+        <h1>{translate("Login")}</h1>
         {error && (
           <div className="error-box">
-            <p>{t("Invalid Login")}</p>
+            <p>{translate("Invalid Login")}</p>
           </div>
         )}
         <Form
@@ -84,7 +84,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
 
           <Form.Item className="text-right">
             <Button type="primary" htmlType="submit">
-              {t("Submit")}
+              {translate("Submit")}
             </Button>
           </Form.Item>
         </Form>

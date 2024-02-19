@@ -11,17 +11,17 @@ const PersonalForm: React.FC = () => {
     dateOfBirth?: string;
   };
 
-  const { t } = useTranslation();
+  const { t: translate } = useTranslation();
 
   return (
     <>
       <Form.Item<FieldType>
-        label={t("Full Name")}
+        label={translate("Full Name")}
         name="fullname"
         rules={[
           {
             required: true,
-            message: `${t("Please input your full name!")}`,
+            message: `${translate("Please input your full name!")}`,
           },
         ]}
       >
@@ -29,13 +29,13 @@ const PersonalForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item<FieldType>
-        label={t("Email")}
+        label={translate("Email")}
         name="email"
         rules={[
-          { type: "email", message: `${t("Please input a valid email!")}` },
+          { type: "email", message: `${translate("Please input a valid email!")}` },
           {
             required: true,
-            message: `${t("Please input your email!")}`,
+            message: `${translate("Please input your email!")}`,
           },
         ]}
       >
@@ -44,11 +44,11 @@ const PersonalForm: React.FC = () => {
 
       <Form.Item<FieldType>
         name="dateOfBirth"
-        label={t("Date Of Birth")}
+        label={translate("Date Of Birth")}
         rules={[
           {
             required: true,
-            message: `${t("Please input your date of birth!")}`,
+            message: `${translate("Please input your date of birth!")}`,
           },
         ]}
       >

@@ -12,7 +12,7 @@ const AddressForm: React.FC = () => {
     zipcode?: string;
   };
 
-  const { t } = useTranslation();
+  const { t: translate } = useTranslation();
   const [selectedState, setSelectedState] = useState<string | undefined>(undefined);
 
   const handleStateChange = (value: string) => {
@@ -24,12 +24,12 @@ const AddressForm: React.FC = () => {
   return (
     <>
       <Form.Item<FieldType>
-        label={t("Street")}
+        label={translate("Street")}
         name="street"
         rules={[
           {
             required: true,
-            message: `${t("Please input your address street!")}`,
+            message: `${translate("Please input your address street!")}`,
           },
         ]}
       >
@@ -37,12 +37,12 @@ const AddressForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item<FieldType>
-        label={t("State")}
+        label={translate("State")}
         name="state"
         rules={[
           {
             required: true,
-            message: `${t("Please input your address state!")}`,
+            message: `${translate("Please input your address state!")}`,
           },
         ]}
       >
@@ -50,12 +50,12 @@ const AddressForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item<FieldType>
-        label={t("City")}
+        label={translate("City")}
         name="city"
         rules={[
           {
             required: true,
-            message: `${t("Please input your address city!")}`,
+            message: `${translate("Please input your address city!")}`,
           },
         ]}
       >
@@ -63,12 +63,12 @@ const AddressForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item<FieldType>
-        label={t("Zip Code")}
+        label={translate("Zip Code")}
         name="zipcode"
         rules={[
           {
             required: true,
-            message: `${t("Please input your address zip code!")}`,
+            message: `${translate("Please input your address zip code!")}`,
           },
         ]}
       >
