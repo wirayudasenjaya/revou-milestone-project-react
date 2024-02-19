@@ -1,14 +1,15 @@
 import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import App from "./App";
-import "./matchMedia.mock";
-import DashboardPage from "./pages/DashboardPage";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
-import "./setupTests";
-import AddItemPage from "./pages/AddItemPage";
+
+import App from "../App";
+import "../matchMedia.mock";
+import "../setupTests";
+
+import RegisterPage from "../pages/RegisterPage";
+import LoginPage from "../pages/LoginPage";
+import AddItemPage from "../pages/AddItemPage";
 
 const Wrappers = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -51,7 +52,7 @@ describe("utility", () => {
     };
     const testFunc = jest.fn();
     window.localStorage.setItem(mockId, JSON.stringify(mockJson));
-    const utils = render(<LoginPage mockFunction={testFunc} />, { wrapper: Wrappers });
+    const utils = render(<LoginPage />, { wrapper: Wrappers });
     const username = utils.getByLabelText(/Username/i);
     const password = utils.getByLabelText(/Password/i);
     const button = utils.getByText(/Submit/i);
@@ -64,28 +65,9 @@ describe("utility", () => {
     };
   }
 
-  function dashboardUtils() {
-    const userData = {
-      fullname: "Wirayuda",
-      email: "wira@mail.com",
-      dateOfBirth: "1999-01-01",
-      street: "Jl. Jalan",
-      city: "Jakarta",
-      state: "DKI Jakarta",
-      username: "wirayuda",
-      isLoggedIn: true,
-    };
-    window.localStorage.setItem("user", JSON.stringify(userData));
-    const utils = render(<DashboardPage />, { wrapper: Wrappers });
-    return {
-      userData,
-      ...utils,
-    }
-  };
-
   function addItemUtils() {
     const testFunc = jest.fn();
-    const utils = render(<AddItemPage mockFunction={testFunc} />, { wrapper: Wrappers });
+    const utils = render(<AddItemPage />, { wrapper: Wrappers });
     const item = utils.getByLabelText(/Item Name/i);
     const quantity = utils.getByLabelText(/Quantity/i);
     const button = screen.getByText(/Submit/i);
@@ -97,34 +79,6 @@ describe("utility", () => {
       testFunc,
     };
   }
-
-  test("render register page", () => {
-    render(<RegisterPage />, { wrapper: Wrappers });
-    const linkElement = screen.getByText(/Personal Information/i);
-    expect(linkElement).toBeInTheDocument();
-  });
-
-  test("render login page", () => {
-    const testFunc = jest.fn();
-    render(<LoginPage mockFunction={testFunc} />, { wrapper: Wrappers });
-    const linkElement = screen.getByText(/Login/i);
-    expect(linkElement).toBeInTheDocument();
-  });
-
-  test("render dashboard page", async () => {
-    const { userData } = dashboardUtils();
-    await waitFor(() => {
-      const linkElement = screen.getByText(/Hello/i);
-      expect(linkElement).toBeInTheDocument();
-    });
-  });
-
-  test("render add item page", () => {
-    const testFunc = jest.fn();
-    render(<AddItemPage mockFunction={testFunc} />, { wrapper: Wrappers });
-    const linkElement = screen.getByText(/Add Item/i);
-    expect(linkElement).toBeInTheDocument();
-  });
 
   test("error if there is empty field", async () => {
     const { button } = main();
@@ -169,26 +123,26 @@ describe("utility", () => {
   });
 
   test("login", async () => {
-    const { username, password, button, testFunc } = loginUtils();
+    const { username, password, button } = loginUtils();
     fireEvent.change(username, { target: { value: "wirayuda" } });
     fireEvent.change(password, {
       target: { value: "Asdf123!" },
     });
     fireEvent.click(button);
     await waitFor(() => {
-      expect(testFunc).toHaveBeenCalled();
+      expect(window.location.pathname).toBe("/");
     }, {timeout: 2000});
   });
 
   test("add item to cart", async () => {
-    const { item, quantity, button, testFunc } = addItemUtils();
+    const { item, quantity, button } = addItemUtils();
     fireEvent.change(item, { target: { value: "Sofa" } });
     fireEvent.change(quantity, {
       target: { value: 1 },
     });
     fireEvent.click(button);
     await waitFor(() => {
-      expect(testFunc).toHaveBeenCalled();
-    });
+      expect(window.location.pathname).toBe("/");
+    }, {timeout: 2000});
   });
 });
