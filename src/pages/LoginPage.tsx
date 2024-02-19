@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Layout, Select } from "antd";
-import background from "../assets/image.webp";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
@@ -56,7 +55,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
 
   return (
     <Layout className="layout">
-      <img src={background} alt="background" className="background" />
+      <img src="/image/image.webp" alt="background" className="background" />
       <section className="form-box">
         <Select
           defaultValue="en"

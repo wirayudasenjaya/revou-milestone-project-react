@@ -11,7 +11,6 @@ import PersonalForm from "../components/PersonalForm";
 import AddressForm from "../components/AddressForm";
 import AccountForm from "../components/AccountForm";
 import ResultPage from "../components/Result";
-import background from "../assets/image.webp";
 import { userState } from "../atom";
 
 interface RegisterPageProps {}
@@ -72,7 +71,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
         </div>
       ) : (
         <>
-          <img src={background} alt="background" className="background" />
+          <img src="/image/image.webp" alt="background" className="background" />
           <section className="form-box">
             <Select
               defaultValue="en"

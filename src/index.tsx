@@ -4,8 +4,8 @@ import { RecoilRoot } from "recoil";
 import "./index.css";
 import App from "./App";
 import "./App.css";
-import "./assets/css/auth.css";
-import "./assets/css/dashboard.css";
+import "./css/auth.css";
+import "./css/dashboard.css";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
