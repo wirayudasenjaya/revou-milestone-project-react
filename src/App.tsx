@@ -3,26 +3,17 @@ import { ConfigProvider } from "antd";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import useAuth from "./hooks/useAuth";
+import { antdTheme } from "./utils";
 
 import { protectedRoutes, publicRoutes } from "./routes/index";
 import PageLayout from "./pages/Layout";
 
 const App: React.FC = () => {
   const isLoggedIn = useAuth();
-  console.log(isLoggedIn);
 
   return (
     <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#a82a22",
-        },
-        components: {
-          Layout: {
-            bodyBg: "#fff",
-          },
-        },
-      }}
+      theme={antdTheme}
     >
       <BrowserRouter>
         <Routes>
