@@ -15,7 +15,6 @@ const protectedRoutes = [
   {
     path: "/dashboard/add",
     component: AddItemPage,
-    mock: true,
   },
 ];
 
@@ -31,7 +30,6 @@ const publicRoutes = [
   {
     path: "/login",
     component: LoginPage,
-    mock: true,
   },
 ];
 

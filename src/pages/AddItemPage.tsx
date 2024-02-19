@@ -4,16 +4,13 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import ItemForm from "../components/ItemForm";
 
-interface AddItemPageProps {
-  mockFunction: () => void;
-}
+interface AddItemPageProps {}
 
-const AddItemPage: React.FC<AddItemPageProps> = ({ mockFunction }) => {
+const AddItemPage: React.FC<AddItemPageProps> = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
-    mockFunction();
     const items = localStorage.getItem("items");
     const parsedItems = JSON.parse(items || "[]");
     localStorage.setItem("items", JSON.stringify([...parsedItems, values]));

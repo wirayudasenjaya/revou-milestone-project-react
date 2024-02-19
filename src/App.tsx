@@ -24,13 +24,13 @@ const App: React.FC = () => {
     >
       <BrowserRouter>
         <Routes>
-          {parsedUser.isLoggedIn === true ? (
+          {parsedUser.isLoggedIn ? (
             <Route path="/" element={<PageLayout />}>
               {protectedRoutes.map((route: any, index: any) => (
                 <Route
                   key={index}
                   path={route.path}
-                  element={route.mock === true ? <route.component mockFunction={testFunc} /> : <route.component />}
+                  element={<route.component />}
 
                 />
               ))}
@@ -40,7 +40,7 @@ const App: React.FC = () => {
               <Route
                 key={index}
                 path={route.path}
-                element={route.mock === true ? <route.component mockFunction={testFunc} /> : <route.component />}
+                element={<route.component />}
               />
             ))
           )}
