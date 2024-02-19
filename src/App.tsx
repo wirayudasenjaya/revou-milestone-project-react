@@ -1,12 +1,15 @@
 import React from "react";
 import { ConfigProvider } from "antd";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import useAuth from "./hooks/useAuth";
+
 import { protectedRoutes, publicRoutes } from "./routes/index";
 import PageLayout from "./pages/Layout";
 
 const App: React.FC = () => {
-  const user = localStorage.getItem("user");
-  const parsedUser = JSON.parse(user || "{}");
+  const isLoggedIn = useAuth();
+  console.log(isLoggedIn);
 
   return (
     <ConfigProvider
@@ -23,7 +26,7 @@ const App: React.FC = () => {
     >
       <BrowserRouter>
         <Routes>
-          {parsedUser.isLoggedIn ? (
+          {isLoggedIn ? (
             <Route path="/" element={<PageLayout />}>
               {protectedRoutes.map((route: any, index: any) => (
                 <Route
