@@ -50,7 +50,6 @@ describe("utility", () => {
       password: "Asdf123!",
       isLoggedIn: false,
     };
-    const testFunc = jest.fn();
     window.localStorage.setItem(mockId, JSON.stringify(mockJson));
     const utils = render(<LoginPage />, { wrapper: Wrappers });
     const username = utils.getByLabelText(/Username/i);
@@ -60,13 +59,11 @@ describe("utility", () => {
       username,
       password,
       button,
-      testFunc,
       ...utils,
     };
   }
 
   function addItemUtils() {
-    const testFunc = jest.fn();
     const utils = render(<AddItemPage />, { wrapper: Wrappers });
     const item = utils.getByLabelText(/Item Name/i);
     const quantity = utils.getByLabelText(/Quantity/i);
@@ -76,7 +73,6 @@ describe("utility", () => {
       item,
       quantity,
       button,
-      testFunc,
     };
   }
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, InputNumber, Select } from "antd";
 import { useTranslation } from "react-i18next";
 
-import '../i18n';
+import "../i18n";
 import { cityBanten, cityJakarta, state } from "../utils";
 
 const AddressForm: React.FC = () => {
@@ -14,7 +14,9 @@ const AddressForm: React.FC = () => {
   };
 
   const { t: translate } = useTranslation();
-  const [selectedState, setSelectedState] = useState<string | undefined>(undefined);
+  const [selectedState, setSelectedState] = useState<string | undefined>(
+    undefined
+  );
 
   const handleStateChange = (value: string) => {
     setSelectedState(value);
@@ -60,7 +62,10 @@ const AddressForm: React.FC = () => {
           },
         ]}
       >
-        <Select options={cityOptions} disabled={!selectedState} />
+        <Select
+          options={cityOptions}
+          disabled={!selectedState}
+        />
       </Form.Item>
 
       <Form.Item<FieldType>
