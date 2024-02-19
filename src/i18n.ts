@@ -14,16 +14,16 @@ const resources = {
   }
 }
 
-const language = localStorage.getItem("I18N_LANGUAGE")
+const language = localStorage.getItem("i18n_language")
 if (!language) {
-  localStorage.setItem("I18N_LANGUAGE", "en")
+  localStorage.setItem("i18n_language", "en")
 }
 
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem("I18N_LANGUAGE") || "en",
+    lng: localStorage.getItem("i18n_language") || "en",
     fallbackLng: "en",
 
     keySeparator: false,
