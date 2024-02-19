@@ -3,7 +3,7 @@ import { Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
 import '../i18n';
 
-const FormPage3: React.FC = () => {
+const AccountForm: React.FC = () => {
   type FieldType = {
     username?: string;
     password?: string;
@@ -88,4 +88,4 @@ const FormPage3: React.FC = () => {
   );
 };
 
-export default FormPage3;
+export default AccountForm;

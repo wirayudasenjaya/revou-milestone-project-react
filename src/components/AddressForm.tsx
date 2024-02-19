@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import '../i18n';
 import { cityBanten, cityJakarta, state } from "../utils";
 
-const FormPage2: React.FC = () => {
+const AddressForm: React.FC = () => {
   type FieldType = {
     street?: string;
     city?: string;
@@ -78,4 +78,4 @@ const FormPage2: React.FC = () => {
   );
 };
 
-export default FormPage2;
+export default AddressForm;

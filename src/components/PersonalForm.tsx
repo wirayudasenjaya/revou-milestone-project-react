@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import "../i18n";
 import dayjs from "dayjs";
 
-const FormPage1: React.FC = () => {
+const PersonalForm: React.FC = () => {
   type FieldType = {
     fullname?: string;
     email?: string;
@@ -58,4 +58,4 @@ const FormPage1: React.FC = () => {
   );
 };
 
-export default FormPage1;
+export default PersonalForm;
