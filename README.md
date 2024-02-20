@@ -1,6 +1,6 @@
-## REVOU MILESTONE PROJECT REACT - WIRAYUDA
+## Revou Milestone Project React - Wirayuda
 
-Website ini merupkaan website yang terdiri atas multi step registration form, login form, dashboard page, dan add item page. User dapat mendaftarkan diri pada website, masuk kedalam website dengan akun mereka, menambahkan barang dan melihat barang serta data diri mereka.
+Website ini merupakan website yang terdiri atas multi step registration form, login form, dashboard page, dan add item page. User dapat mendaftarkan diri pada website, masuk kedalam website dengan akun mereka, menambahkan barang dan melihat barang serta data diri mereka.
 
 ### Library yang Digunakan
 
@@ -12,7 +12,7 @@ Website ini merupkaan website yang terdiri atas multi step registration form, lo
 - **i18next**: i18next digunakan untuk internasionalisasi pada website
 - **React Testing Library**: React Testing Library digunakan untuk menguji komponen pada aplikasi React
 
-### Cara menjalankan website
+### Cara Menjalankan Website
 
 1. Clone repository
 2. Jalankan `npm install`
@@ -21,6 +21,7 @@ Website ini merupkaan website yang terdiri atas multi step registration form, lo
 
 ### Struktur Folder
 
+- **public**: Folder ini berisi berkas statis yang akan disajikan oleh server, seperti favicon, gambar, atau berkas lainnya.
 - **src**: Folder utama yang berisi semua file sumber untuk proyek.
 	- **components**: Folder ini berisi komponen React yang digunakan dalam proyek.
 	- **css**: Folder ini berisi file-file CSS (Cascading Style Sheets) yang digunakan untuk styling komponen-komponen dalam aplikasi.
@@ -29,3 +30,7 @@ Website ini merupkaan website yang terdiri atas multi step registration form, lo
 	- **pages**: Folder ini berisi halaman utama atau komponen yang mewakili halaman utama proyek.
 	- **routes**: Folder ini berisi definisi rute atau navigasi dalam aplikasi.
 	- **tests**: Folder ini berisi semua berkas tes untuk proyek.
+
+	- **atom.ts** = File ini berisi konfigurasi yang digunakan untuk library Recoil
+	- **i18n.ts** = File ini berisi konfigurasi yang digunakan untuk library i18next
+	- **utils.ts** = File ini berisi data statik yang digunakan pada website
